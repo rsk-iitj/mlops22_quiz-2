@@ -68,7 +68,8 @@ for c in C:
 
 df = pd.DataFrame({'C' : C_list, 'gamma' : gamma_list, 'train_accuracy' : train_acc_list, 
                    'dev_accuracy' : valid_acc_list,'test_accuracy' : valid_acc_list})
-#display(df)
+display(df)
+display(df_row)
 
 df_row = pd.DataFrame({'Mean' : mean_row, 'max' : max_row, 'median' : median_row, 
                    'min' : min_row})
@@ -94,4 +95,4 @@ df_final = pd.DataFrame({'train_accuracy' : [train_acc],'dev_accuracy' : [valid_
                          'test_accuracy' : [test_acc]})
 df_final.index = ['C ' + str(best_c) + ' gamma ' + str(best_gamma)]
 
-#display(df_final)
+display(df_final)
