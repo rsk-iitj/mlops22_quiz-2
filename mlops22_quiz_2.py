@@ -68,8 +68,7 @@ for c in C:
 
 df = pd.DataFrame({'C' : C_list, 'gamma' : gamma_list, 'train_accuracy' : train_acc_list, 
                    'dev_accuracy' : valid_acc_list,'test_accuracy' : valid_acc_list})
-display(df)
-display(df_row)
+
 
 df_row = pd.DataFrame({'Mean' : mean_row, 'max' : max_row, 'median' : median_row, 
                    'min' : min_row})
@@ -80,7 +79,7 @@ best_params = df[df['dev_accuracy'] == max_score]
 best_c = best_params['C'].values[0]
 best_gamma = best_params['gamma'].values[0]
 
-
+print("Best Accuracy for dev is :",round(max_score, 2))
 
 model = SVC(C = best_c, gamma = best_gamma)
 model.fit(xtrain, ytrain)
@@ -90,9 +89,16 @@ train_acc = model.score(xtrain, ytrain)
 valid_acc = model.score(xvalid, yvalid)
 test_acc = model.score(xtest, ytest)   
 
-
 df_final = pd.DataFrame({'train_accuracy' : [train_acc],'dev_accuracy' : [valid_acc], 
                          'test_accuracy' : [test_acc]})
 df_final.index = ['C ' + str(best_c) + ' gamma ' + str(best_gamma)]
+
+display(df)
+display(df_row)
+
+print("Best Accuracy for dev is :",round(max_score, 2))
+
+print("Value for C for Max Dev Accuracy :",best_c)
+print("Value for Gamme for Max Dev Accuracy :",best_gamma)
 
 display(df_final)
