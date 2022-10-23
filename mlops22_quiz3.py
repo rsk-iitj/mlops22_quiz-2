@@ -27,7 +27,7 @@ gamma =  [0.0001,0.001,0.01,1,10,50,100]
 
 model = SVC(C=C[0], gamma=gamma[0])
 model.fit(xtrain, ytrain)
-predicted = model.predict(xvalid)
+predicted = model.predict(xtest)
 print(type(predicted))
 
 
@@ -49,3 +49,5 @@ def test_predicted_from_all_class():
             print(str(digit) +" is not present in the predicted")
             break
     assert flag == True
+
+
